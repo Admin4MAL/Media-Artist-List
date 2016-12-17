@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2016 Mike B O'Shea - Version 1.00
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 3
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+-->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Media/Artist Lists</title>
+<link rel="stylesheet" type="text/css" href="MAL.css">
+</head>
+<body> 
+<h1 id=\"Top_index\"><center>Media/Artist Lists - Help</center></h1>
+
+<ul class='no-print' id="menu" >
+<li id="menu_item"><a href="../MAL_start.php"><div id='menu_text'>Start Page</div></a></li>
+<li id="menu_item"><a href="MAL_full_album_list.php"><div id='menu_text'>Full Album List</div></a></li>
+<li id="menu_item" ><a href="MAL_full_track_list.php?a=2"><div id='menu_text'>Full Track List</div></a></li>
+<li id="menu_item" ><a href="MAL_full_track_list.php?a=0"><div id='menu_text'>Full Track List (Freq)</div></a></li>
+</ul>
+
+<h2 id="Contents">Contents</h2>
+<ol>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#Installation ">Installation </a></li>
+<li><a href="#Startingtheapplication">Starting the application</a></li>
+<li><a href="#PageLayout">Page Layout/Usage</a></li>
+<li><a href="#PageswithintheApplication" >Pages within the Application</a></li>
+<ol>
+<li><a href="#StartPageorMediaArtistListArtistList" >Start Page or Media/Artist List - Artist List</a></li>
+
+<li><a href="#MediaArtistListAlbumDetail" >Media/Artist List - Album Detail</a></li>
+<li><a href="#MediaArtistListAlbumList" >Media/Artist List - Artist Album List</a></li>
+<li><a href="#MediaArtistListArtistComposedList" >Media/Artist List - Artist Composed List</a></li>
+<li><a href="#MediaArtistListArtistTrackList" >Media/Artist List - Artist Track List</a></li>
+<li><a href="#MediaArtistListArtistsResponsible" >Media/Artist List - Artists Responsible For</a></li>
+<li><a href="#MediaArtistListFullAlbumList" >Media/Artist List - Full Album List</a></li>
+<li><a href="#MediaArtistListFullTrackList" >Media/Artist List - Full Track List (Freq)</a></li>
+<li><a href="#MediaArtistListFullTrackList" >Media/Artist List - Full Track List</a></li>
+</ol>
+<li><a href="#Printing" >Printing</a></li>
+<li><a href="#CSVFile" >CSV File</a></li>
+<li><a href="#M3UFile" >M3U Playlist</a></li>
+<li><a href="#Futuredevelopmentfeatureofthesepages" >Future development/feature of these pages</a></li>
+<li><a href="#Customisation">Customisation</a></li>
+<ol>
+<li><a href="#CSSChangingthewayitlooks">CSS - Changing the way it looks</a></li>
+<li><a href="#SQLChangingthedataitdisplays">SQL - Changing the data it displays</a></li>
+<li><a href="#PHPChangingthewayitworks">PHP - Changing the way it works</a></li>
+</ol>
+<li><a href="#Licence">Licence</a></li>
+<li><a href="#FileList">File List</a></li>
+<li><a href="#Glossary">Glossary</a></li>
+<li><a href="#Links">Links</a></li>
+</ol>
+
+<div>
+<h2 id="Introduction">Introduction</h2>
+<p>My aim in developing <b>Media/Artist Lists</b> as a web application was to create something simple to use, that provides a quick and straight forward way of looking at a Squeezebox/Vortexbox based music collection.  I wanted to be able to easily see all the material related to a specific artist in list format.</p>
+
+<p>This project is made available under the GNU Public Licence and so is open for others either to contribute to or to clone and do their own thing with under the terms of that licence.  I'm also happy to receive suggestions for additional features and improvements, though I offer no commitment as to if and when I will do the work as I'm also working on other projects.</p>
+
+<p>From an installation point of view, this application is just some extra files on your system, not making any changes to the Vortexbox/LMS configuration. The installation routine copies the files into the folder used by the web server and sets the security permissions on them that allows them to be used by the Web Server software. It works with its own copy of the LMS database file, not the one LMS uses as LMS prevents other applications from accessing it.  Each time most pages load, they checks to see if the copy of the database file exists/has changed and copies it to its own location as required.</p>
+
+<p>As the files sit within the folder from which the web server shares web pages and should work with any web server.  I have tested it with Apache and the Nginx web server that Vortexbox currently uses.  The application is fairly simple/generic it should work with other web servers.</p>
+
+<p>I have targeted this for use on the Vortexbox systems, as I have been using it for some time and appreciates the benefits it brings.  It should I guess work with any resent version of LMS that uses the SQLite database.</p>
+
+<p>The information these pages display is only from the LMS database. LMS builds its database from information held within your music files and so will be as accurate/consistent as the music file tags/meta data.  If you select an Artist Name or something similar and you have variations in the way that is stored within the database, then you will only get the variation you've selected, not the slight variations.  Things like different abbreviations, capitalisation and different/miss-spelling and even extra spaces are all variations. These pages will work better the more consistent your information is.  If the data is missing or different then the links can't be made!</p>
+
+<p>I would also point out that I come from a world were music comes as Albums (or CDs), so that is my expectation within the application and its focus.  If your focus is on tracks rather than Albums this might not work so well for you.  Album lists aren't so useful if you aren't necessarily talking about complete Albums.  You will have to remember that what shows as an Album might be one or more tracks from it, though looking at the Album detail will show the actual tracks you have.  The Artist Track List should still be useful if you have a track focus.</p>
+</div>
+
+<div>
+<h2 id="Installation">Installation</h2>
+<p>The instructions for installing are found within the <b>install.txt</b> found within the zip file containing the application.</p>
+</div>
+
+<div>
+<h2 id="Startingtheapplication">Starting the application</h2>
+<p>After you have carried out the installation, you start it by loading the <b>MAL_start.php</b> file in your web browser, such as Firefox or Chrome.  To do this you need to type the IP address of your Vortexbox or LMS Server followed by a slash <b>/</b> and the file name <b>MAL_start.php</b>.  This should be something like <b>http://192.168.1.2/MAL_start.php</b>, though the IP Address is very likely to be different.  Pressing return or clicking on the reload the page icon in the browser once you have typed the address should load the page.  When you are on this page you might like to bookmark/make the page a favourite, to avoid having to remember what you have just done, if you find the pages useful.</p>
+</div>
+
+
+<div>
+<h2 id="PageLayout">Page Layout/Usage</h2>
+<p>Every page presents you with a Title for the page, with the <b>Main Menu</b> (the same on every page) below it.  The <b>Main Menu</b> includes options such as <b>Help</b>, returning to the <b>Start Page</b> and some other choices.  On Most pages there is also a <b>Page Specific Menu</b>, that includes options that are specific to that page, including links to related pages and options to save to files.  Some pages will have a <b>Side Menu</b> on the left hand side of the page, providing an option to jump to a point on the page where the listed items start with the number or letter selected on the menu.  This is very useful on pages with long lists, being faster than scrolling.</p>
+
+<p>You move around the pages using the Menus and some links within the pages.  The links do not display as conventional web page links, but are consistent elements within the page and are coloured to reflect that. The <span id='album'>Album</span> Title, <span id='artist'>Artist</span> Name and <span id='track'>Track</span> Title are all links.  The <span id='album'>Album</span> Title always takes you to the Album Detail page for that album, the <span id='artist'>Artist</span> name takes you to the Album list for that Artist and <span id='track'>Track</span> Title takes you to a list of occurrence of that Track.  They are coloured differently to make them stand out.  You can also use the web browser <b>Back Button</b> - <b>[<-]</b> to take you back to the previous page.</p>
+</div>
+
+<h2 id="PageswithintheApplication" >Pages within the Application</h2>
+<div>
+<h3 id="StartPageorMediaArtistListArtistList" >Start Page or Media/Artist List - Artist List</h3>
+<p>The <b>Start Page</b> on the menu, or <b>Media/Artist List - Artist List</b> as the page is titled, is the page that loads when you load <b>MAL_start.php</b>, it provides you with a list of all the Artists in your collection, divided in to Alphabetical, sections.  You can move around the list using either the scroll bar or the side menu.  Clicking on a <span id='artist'>Artist</span> Name will take you to the <b>Media/Artist List - Album List</b>.  This list includes all the Artists in your collection, whether there is are single tracks or complete albums by them.  If it is possible the underlying LMS database has changed since you last loaded this page, it is worth reloading it to ensure the copy of the database is up to date.</p>
+</div>
+
+<div>
+<h3 id="MediaArtistListAlbumDetail" >Media/Artist List - Album Detail</h3>
+<p>The <b>Media/Artist List - Album Detail</b> provides you with the information about the album, which should include the cover art if it displays in LMS and a listing of all the tracks you have from it. If the <b>Track Artists</b> differ from the Album artist it should show the actual Artist and will also show variations in <b>Genre</b>.  Clicking on an <span id='artist'>Artist</span> Name will take you to the <b>Media/Artist List - Album List</b> for that Artist.</p>
+</div>
+
+<div>
+<h3 id="MediaArtistListAlbumList" >Media/Artist List - Artist Album List</h3>
+<p>The <b>Media/Artist List - Artist Album List</b> will provide a list of Albums/collections that includes tracks by the <span id='artist'>Artist</span> Name you clicked on.  This page focuses on the Albums/collections for an Artist, identifying the Albums based on the <span id='album'>Album</span> Name tag within the music file.  It tries to group the Albums into groups that are explained below and orders the albums according to the <b>Release Date</b> tag.  Clicking on the <span id='album'>Album</span> Name will bring up the <b>Media/Artist List - Album Detail</b> page.</p>
+
+<p>On this page the Albums will be grouped in the following categories:
+<ol type="a">
+<li>Albums by the Artist.</li>
+<li>Albums on which the Artist is a guest.</li>
+<li>Various-Artist Albums on which the Artist appears.</li>
+<li>Albums on which the Artist composed Tracks.</li>
+</ol></p>
+</div>
+
+<div>
+<h3 id="MediaArtistListArtistComposedList" >Media/Artist List - Artist Composed List</h3>
+<p>When you are on a page that has a selected Artist you may see a button for the <b>Artist Composed List</b> on the Menu.  The Menu only includes this button if the selected Artist has any tracks with the Artist marked as the Composer within the Tag/Meta-Data.  If it appears, clicking on it should take you to a list of all the tracks Composed by that artist in your collection. The tracks are in Alphabetical order and the album they appear on is displayed in the list, clicking on that name will take you to the Media/Artist List - Album Detail page.  This page is similar to the Artist Track List, but also shows the name of the Artist that recorded the track.</p>
+
+<p>The Composer Tag/Meta-Data isn't used by a lot of people and would be more commonly used by Classical Music fans.  Unless you have added this data yourself, you will probably find this page/list doesn't include everything it should and that the tagging in your collection is inconsistent.</p>
+</div>
+
+<div>
+<h3 id="MediaArtistListArtistTrackList" >Media/Artist List - Artist Track List</h3>
+<p>When you are on a page that has a selected Artist you will see <b>Artist Track List</b> on the Menu, clicking on this should take you to a list of all the tracks by that artist in your collection.  The tracks are in Alphabetical order and the album they appear on is displayed in the list, clicking on that <span id='album'>Album</span> Name will take you to the <b>Media/Artist List - Album Detail</b> page.</p>
+</div>
+
+<div>
+<h3 id="MediaArtistListArtistsResponsible" >Media/Artist List - Artist Responsible for:</h3>
+<p>This is the page that loads when you click on a <span id='track'>Track</span>, it presents you with all the instances of the <span id='track'>Track</span> you clicked on within the collection.   It provides a list of the Artist who recorded the track, the Album on which they recorded it and the year in which it was released. Because Track Titles aren't necessarily unique these pages may list occurrence of tracks that are different, but that have the same title.</p>
+</div>
+
+<div>
+<h3 id="MediaArtistListFullAlbumList" >Media/Artist List - Full Album List</h3>
+<p>The <b>Full Album List</b> is a menu choice, that appears on every page, it takes you to a list of all the Albums/Collections in your collection ordered by Artist.  It includes the <span id='artist'>Artist</span> Name, that you can click on to get to the <b>Media/Artist List - Album List</b> page for that Artist and each album name you have, that will take you to the <b>Media/Artist List - Album Detail</b> page for that album.  This list only includes artists you have Albums by, not Artists with tracks on albums by other Artists.</p>
+</div>
+
+<div>
+<h3 id="MediaArtistListFullTrackList" >Media/Artist List - Full Track List</h3>
+<p>The <b>Full Track List</b> and <b>Full Track List (Freq)</b> are menu choices that appears on every page.  The links take you to a list of all the Tracks within the Collection.  Clicking on a <span id='track'>Track</span>   Title takes you to the <b>Artists Responsible for</b>... page, that provides a list of all the occurrence of that <span id='track'>Track</span>.  Because Track Titles aren't necessarily unique these pages may list occurrence of tracks that are different, but that have the same title.</p>
+<p>The <b>Full Track List</b> version of this page is ordered by the <span id='track'>Track</span> Alphabetically and <b>Full Track List (Freq)</b> one is ordered by the number of times the <span id='track'>Track</span> occurs within the your collection.  If you have a large music collection this these pages may take a while to load.</p>  
+</div>
+
+<div>
+<h2 id="Printing" >Printing</h2>
+<p>Printing pages is done using the standard Browser print functionality within the Browser menus. I have modified the styling of the pages (using Cascading Style Sheets) to make the pages look different when printed. The menus aren't included in the printouts and the font size is reduced to reduce the number of pages used for longer reports.</p>
+
+<p>Some web browsers add a page header including the page title and URL and a footer with the page count and date. If you don't like including these you can remove or modify them within the printer settings as part of the Browser print settings.</p>
+
+<p>If you wish to save a page to a file such as a PDF file you can do so (on Linux and some versions of Windows, or if you add additional software on other versions of Windows) by going to print the page and from the print dialogue box choosing to print to a PDF file.</p>
+</div>
+
+<div>
+<h2 id="CSVFile" >CSV File</h2>
+<p>The <b>CSV File</b> button on the menu appears on pages that can be saved as CSV (<b>C</b>omma <b>S</b>eparated <b>V</b>ariable) format files.  This provides a fairly straightforward way to get the data into another application where you can manipulate or format it.</p>
+
+<p>CSV format files will load into spreadsheet applications (such as Libra Office Cal or MS Excel), probably by just clicking on the file and the application will provide you with a means to edit or format it as you wish.</p>
+
+<p>Clicking on the <b>CSV File</b> Menu button will bring up a dialogue for you to download the file as you would any other file.  The default file name suggested to you will be prefixed with the date in the format YYYYMMDD, which provides a means of versioning the file and sorting the files based on the name.</p>
+
+<p>The data within the files isn't like the web pages where duplicated lines are left blank.  In the CSV file every line has a complete set of data to provide more flexibility if you manipulate it.</p>
+
+<p>Within the files, the variables/strings such as the Artist, Album and Track names are enclosed within quotation marks, this enables software that might open the file, to be able to differentiate between the commas that separate variables and those that appear within the names.</p>
+</div>
+
+<div>
+<h2 id="M3UFile" >M3U Playlist</h2>
+<p>The <b>M3U Playlist</b> button appears on pages that include items that you might want to save as a playlist, where there are lists of tracks.  It doesn't appear on the Full Track List pages as the output from these is too large and LMS has a Random playlist function that would achieve the same.</p>  
+<h3>Possible Playlists:</h3>
+<ol type="a">
+<li>Album track list            - ordered list.</li>
+<li>Artists Responsible for     - Randomised.</li>
+<li>Tracks Composed by Artist   - Randomised.</li>
+<li>Tracks Performed by Artist  - Randomised.</li>
+</ol>
+<p>The <b>Artists Responsible for</b> List give you a playlist of all the tracks with the same name, which is interesting for tracks that have been frequently covered or for older tracks, most likely found in the Blues and Folk genres where standard tracks are performed by different artists with a lot of variation.</p>
+<p>The playlist is saved to your browsers download location, so you have to copy it to the LMS playlist folder and select to reload all the playlists within LMS before it's available.
+</div>
+
+<div>
+<h2 id="Futuredevelopmentfeatureofthesepages" >Future development/features of these pages</h2>
+<p>I developed this to provides me with information I wanted to see that isn't easily viewable in LMS.  I have made it Open Source because as a Linux user I believe in that as a principle, but also felt it might be useful to others saving them work and giving them opportunity to develop it further if they wish.  In the spirit of Open Source I'm happy for others to contribute and improve. I have other features that I may add, but I'm also open to requests for others features, provided they can work within the constraints of the LMS database and the tools in the toolkit (HTML, PHP, CSS and SQLite).</p>
+</div>
+<div>
+<h2 id="Customisation" >Customisation</h2>
+<p>The application provides a framework that is fairly easy to modify, because everything is in plain text files that are easy to edit using a plain text editor.  Though if you change something and it doesn't work, it can be difficult tracking down the problem, so I would suggest the change a little and test approach rather than making big changes.</p>
+<p>If you are making changes, particularly if you have already made changes, remember to back them up.  If you haven't changed anything you can just re-install.</p>
+</div>
+
+<div>
+<h3 id="CSSChangingthewayitlooks">CSS - Changing the way it looks</h3>
+<p>I have put the CSS in a separate file 'MAL.css', which is read when all the files are created.  This means that modifying the cosmetic aspects of the application can be done just by modifying this file, if your plans for modification aren't too great.  I have commented the tag styling within the file to help with this.</p>
+</div>
+
+<div>
+<h3 id="SQLChangingthedataitdisplays">SQL - Changing the data it displays</h3>
+<p>The SQL is embedded within the PHP and is used to read the data from the database.  If you feel you can improve on or wish to change the way the data is read or what data is read you can update the SQL within these statements.  If you read additional or different fields from the database you may also need to modify the PHP to get that data displayed.</p>
+<p>When working on the SQL I copied the database to another machine and used a Firefox add-on called 'SQLite Manager', which lets you open the database and run SQL against it, to develop and test the code, before pasting it into the PHP statements.</p>
+</div>
+<div>
+<h3 id="PHPChangingthewayitworks">PHP - Changing the way it works</h3>
+<p>As PHP is an interpreted language, it is read and acted upon as the page loaded, so any changes you make will be applied next time you load the page after you have saved it.  Unfortunately if it doesn't work, it just doesn't work not giving you too much in the way of clues as to what is wrong.</p>
+<p>Missing a '<b>;</b>' off the end of a line of code frequently causes a page not to work, without giving any clues, so it's worth checking you haven't done this if a page doesn't load.  If you are going through steps to achieve something it is worth adding each step and then testing before adding the next and also including echo statements that state where they are, so you know how far the code is getting when it runs.</p>
+</div>
+<div>
+<h2 id="Licence">Licence</h2>
+<p>This project is licenced under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU Affero General Public License v3.0</a>, the terms of which can be read if you click on the link.</p>
+</div>
+
+
+<div>
+<h2 id="FileList">File List</h2>
+<center><table id="help_table" >
+<tr><th id="help_table_item">File Name</th><th id="help_table_item">Description</th></tr>
+<tr><td id="help_table_item">MAL.css</td><td id="help_table_item">A Cascading Style Sheet file containing the styling for all the application.</td></tr>
+<tr><td id="help_table_item">MAL_SQL_queries.php</td><td id="help_table_item">This file contains the SQL queries for each page stored within functions, providing a way to keep the SQL all in one place.</td></tr>
+<tr><td id="help_table_item">MAL_album_detail.php</td><td id="help_table_item">Provides the details of an Album/media collection from within the collection.</td></tr>
+<tr><td id="help_table_item">MAL_artist_album_list.php</td><td id="help_table_item">Provides a list of all the albums/media collections the artist has contributed too.</td></tr>
+<tr><td id="help_table_item">MAL_artist_composer_list.php</td><td id="help_table_item">Provides a list of all the tracks composed by the artist within the collection ordered by the track name.</td></tr>                     
+<tr><td id="help_table_item">MAL_artist_track_list.php</td><td id="help_table_item">Provides a list of all the tracks in the collection by the artist ordered by the track name.</td></tr>
+<tr><td id="help_table_item">MAL_csv_album_detail.php</td><td id="help_table_item">The file that is used to save the album detail pages as CSV format files.</td></tr>
+<tr><td id="help_table_item">MAL_csv_artist_album_list.php</td><td id="help_table_item">The file that is used to save the artist album list pages as CSV format files.</td></tr>
+<tr><td id="help_table_item">MAL_csv_file.php</td><td id="help_table_item">The file that is used to save pages as CSV format files.</td></tr>
+<tr><td id="help_table_item">MAL_full_album_list.php</td><td id="help_table_item">Provides a list of all the albums in the collection listed by artist and ordered by release date.</td></tr>
+<tr><td id="help_table_item">MAL_full_track_list.php</td><td id="help_table_item">Provides a list of all the tracks in the collection ordered either by title or occurrence count.</td></tr>
+<tr><td id="help_table_item">MAL_functions.php</td><td id="help_table_item">This file provides all the functions used within the MAL package.</td></tr>
+<tr><td id="help_table_item">MAL_help.html</td><td id="help_table_item">This is a static HTML page that contains help on using this application.</td></tr>
+<tr><td id="help_table_item">MAL_install.sh</td><td id="help_table_item">This file is the installation script that copies the files from the installation directory to the Web Server folders.</td></tr>
+<tr><td id="help_table_item">MAL_m3u_file.php</td><td id="help_table_item">The file that is used to save pages as M3U format files.</td></tr>
+<tr><td id="help_table_item">MAL_menu.php</td><td id="help_table_item">This file contains the menu functions for the main, page specific and side menus.</td></tr>
+<tr><td id="help_table_item">MAL_start.php</td><td id="help_table_item">The file that loads the application, giving a list of all the artists in the collection.</td></tr>
+<tr><td id="help_table_item">MAL_tracks_responsible_artists_list.php</td><td id="help_table_item">Provides a list of all the Artists who have recorded a track with a specific Title.</td></tr>
+</table></center>
+</div>
+
+<div>
+<h2 id="Glossary">Glossary</h2>
+<center><table id="help_table">
+<tr><td id="help_table_item"><b>Apache</b></td><td id="help_table_item">Apache is a freely available Web server that is distributed under an "open source" license. It runs on most most operating systems and is probably the most widely used Web Server on the Internet.</td></tr>
+<tr><td id="help_table_item"><b>CSS</b></td><td id="help_table_item"><b>C</b>ascading <b>S</b>tyle <b>S</b>heet, the markup language used for applying graphical style to Web Pages.</td></tr>
+<tr><td id="help_table_item"><b>CSV</b></td><td id="help_table_item"><b>C</b>omma <b>S</b>eparated <b>V</b>ariable, a text based file format used for transfering data between different software.</td></tr>
+<tr><td id="help_table_item"><b>FLAC</b></td><td id="help_table_item"><b>F</b>ree <b>L</b>ossless <b>A</b>udio <b>C</b>odec - A Lossless audio encoding format.</td></tr>
+<tr><td id="help_table_item"><b>GNU</b></td><td id="help_table_item">A recursive acronym for "<b>G</b>NU's <b>N</b>ot <b>U</b>nix."
+<tr><td id="help_table_item"><b>HTML</b></td><td id="help_table_item"><b>H</b>yper <b>T</b>ext <b>M</b>ark-up <b>L</b>anguage, the language used for laying out Web Pages.</td></tr>
+<tr><td id="help_table_item"><b>LMS</b></td><td id="help_table_item"><b>L</b>ogitech <b>M</b>edia <b>S</b>erver, also know and the Squeezebox server.  This server is now Open Sourced (under GNU General Public License).</td></tr>
+<tr><td id="help_table_item"><b>M3U</b></td><td id="help_table_item">A text based file format for media playlists.</td></tr>
+<tr><td id="help_table_item"><b>Nginx</b></td><td id="help_table_item">(pronounced "engine x") A freely available Web Server.</td></tr>
+<tr><td id="help_table_item"><b>PHP</b></td><td id="help_table_item">"<b>P</b>HP: <b>H</b>ypertext <b>P</b>re-processor" (A recursive acronym).  A scripting language used within HTML, that runs of the server dynamically building web pages that appear on the client.</td></tr>
+<tr><td id="help_table_item"><b>SQL</b></td><td id="help_table_item"><b>S</b>tructured <b>Q</b>uery <b>L</b>anguage - A programming language used for managing and querying relational databases.</td></tr>
+<tr><td id="help_table_item"><b>SQLite</b></td><td id="help_table_item">An in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.</td></tr>
+<tr><td id="help_table_item"><b>Squeezebox</b></td><td id="help_table_item">Squeezebox is a network music player from Logitech that uses LMS as its server.</td></tr>
+<tr><td id="help_table_item"><b>VortexBox</b></td><td id="help_table_item">VortexBox is a free, open source (GPL v3), Linux distribution that provides a ready-made and easy to use music server/jukebox.  Its core is the LMS/Squeezebox system.</td></tr>
+
+</table></center>
+</div>
+
+<div>
+<h2 id="Links">Links</h2>
+<center><table id="help_table">
+<tr><th id="help_table_item">Link</th><th id="help_table_item">Description</th></tr>
+<tr><td id="help_table_item"><a href="http://forums.slimdevices.com">Squeezebox/LMS Website</a></td><td id="help_table_item">The forums and wiki for the LMS development project.</td></tr>
+<tr><td id="help_table_item"><a href="http://vortexbox.org/about">Vortexbox Website</a></td><td id="help_table_item">The Website that provides support and downloads for the Vortexbox Distribution.</td></tr>
+<tr><td id="help_table_item"><a href="http://www.w3schools.com/">www.w3schools.com</a></td><td id="help_table_item">Tutorials on web based technologies such as HTML, PHP, CSS , SQL and similar technologies.</td></tr>
+<tr><td id="help_table_item"><a href="https://addons.mozilla.org/en-gb/firefox/addon/sqlite-manager/">SQLite Manager - Add-on for Firefox</a></td><td id="help_table_item">A Graphical frontend that runs within the Firefox interface enabling you to work with and manage SQLite databases.</td></tr>
+<tr><td id="help_table_item"><a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</td><td id="help_table_item">Wikipedia page giving definition/detail of the file format.</td></tr>
+<tr><td id="help_table_item"><a href="https://en.wikipedia.org/wiki/M3U">M3U</a></td><td id="help_table_item">Wikipedia page giving definition/detail of the file format.</td></tr>
+<tr><td id="help_table_item"><a href="https://secure.php.net/manual/en/index.php/">PHP Manual Website</a></td><td id="help_table_item">The Website providing documentation for the PHP language.</td></tr>
+<tr><td id="help_table_item"><a href="https://www.gnu.org">GNU Project</td><td id="help_table_item">The Website for the GNU Project.</td></tr>
+<tr><td id="help_table_item"><a href="https://www.sqlite.org/">SQLite Website</a></td><td id="help_table_item">Website for the SQLite database.</td></tr>
+</table></center>
+</div>
+
+<div>
+<h3>I hope this is useful to you, aiding you in the management and enjoyment of your music!</h3>
+
+<br /><center><h4>WARNING: Using this product my result in compulsive behaviour<br />with many hours of your time spent editing and correcting<br />Meta-Data in your music files.</h4></center>
+</div>
+
+</body>
+</html>
