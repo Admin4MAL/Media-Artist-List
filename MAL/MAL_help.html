@@ -69,6 +69,8 @@
 
 <p>This project is made available under the GNU Public Licence and so is open for others either to contribute to or to clone and do their own thing with under the terms of that licence.  I'm also happy to receive suggestions for additional features and improvements, though I offer no commitment as to if and when I will do the work as I'm also working on other projects.</p>
 
+<p>The software is server based, it is installed on the LMS/Vortexbox server and is then accessible from all computers and mobile devices that have access to your network, without doing anything on the machine that uses it.</p>
+
 <p>From an installation point of view, this application is just some extra files on your system, not making any changes to the Vortexbox/LMS configuration. The installation routine copies the files into the folder used by the web server and sets the security permissions on them that allows them to be used by the Web Server software. It works with its own copy of the LMS database file, not the one LMS uses as LMS prevents other applications from accessing it.  Each time most pages load, they checks to see if the copy of the database file exists/has changed and copies it to its own location as required.</p>
 
 <p>As the files sit within the folder from which the web server shares web pages and should work with any web server.  I have tested it with Apache and the Nginx web server that Vortexbox currently uses.  The application is fairly simple/generic it should work with other web servers.</p>

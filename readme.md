@@ -1,5 +1,7 @@
 MAL (Media/Artist List) is an open source add-on for the LMS/Squeezebox Media player, that will work with the Vortexbox distribution that provides a preconfigured LMS server.
 
+The software is server based, it is installed on the LMS/Vortexbox server and is then accessible from all computers and mobile devices that have access to your network, without doing anything on the machine that uses it.
+
 I have used Vortexbox, with LMS within it for many years and would strongly recomend it.
 
 This is a web based application built with PHP, HTML and CSS that copies the SQLite LMS database and uses the copy to provide lists of the Albums, Artists and Tracks within your music collection in what I hope is a useful way. 
