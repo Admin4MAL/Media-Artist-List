@@ -27,11 +27,7 @@ A problem with the meta-data/tags held within music files is that unless you hav
 The lists this application displays will provide a way to spot the inconsistencies, either ignoring them or taking a lot of time to correct them.
 Let me know what you think, suggest improvements and point out any problems, remembering it works with your data and within the constraints of the structure of the LMS database.
 
-Add links to 
-Vortexbox
-LMS
 
+(http://vortexbox.org/about "Vortexbox")
+(http://forums.slimdevices.com "LMS")
 
-Add License file
-add how to download from github to the forum post
-Add the web page to the github page, removing the links at the top
