@@ -407,7 +407,6 @@ ORDER BY
 	tracks.titlesort;",
 	
 	
-	
 // Produces a list of tracks by the artist for a m3u file
 "artist_track_list_m3u" =>       
 "SELECT  
@@ -429,7 +428,6 @@ ORDER BY
     tracks.id
  ORDER BY
     random();",
-    
 
                                             
 // Produces a list of artists responsible for tracks by the artist for a webpage
@@ -670,8 +668,7 @@ GROUP BY
 ORDER BY 
 	titlesort ASC, 
 	Freqency DESC;",
-        
-    
+            
 
 // Produces a page index page content for the full track list webpage when ordered by title     
 "full_track_list_title_index" =>

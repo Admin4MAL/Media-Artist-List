@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (C) 2016 Mike B O'Shea
+# Copyright (C) 2016 Mike B O'Shea - Version 1.00
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License

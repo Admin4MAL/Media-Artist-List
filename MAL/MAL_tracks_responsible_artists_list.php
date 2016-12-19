@@ -20,12 +20,11 @@
 // GNU General Public License for more details.
 //
 
-
 include 'MAL_menu.php';
 include 'MAL_SQL_queries.php';
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL | E_STRICT);
 
 	if(open_db()) {
 		$track_key = $_GET['a'];

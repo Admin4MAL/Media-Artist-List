@@ -20,8 +20,8 @@
 // GNU General Public License for more details.
 //
  
- ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL | E_STRICT);
  
 include 'MAL_menu.php';
 include 'MAL_SQL_queries.php';

@@ -16,8 +16,8 @@
 include 'MAL_functions.php';
 include 'MAL_SQL_queries.php';
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL | E_STRICT);
 
     header('Content-type: text/plain');
     $file_name = $_GET['file']; 

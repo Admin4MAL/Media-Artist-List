@@ -24,8 +24,8 @@
 include 'MAL_menu.php';
 include 'MAL_SQL_queries.php';
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL | E_STRICT);
 
 	if(open_db()) {
 		$sort = $_GET['a'];

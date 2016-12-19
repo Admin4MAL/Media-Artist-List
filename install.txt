@@ -1,30 +1,33 @@
 These instructions assume you are installing on a Linux server, but downloading the installation to a desktop type machine.  It works for me with the latest version of Vortexbox. 
 
-Down load the zip file from GitHub.
+Download the zip file from GitHub.
 Extract the content from the archive to your home area.
 Copy or move the folder structure you extracted to an accessible area on your Vortexbox server, such as the files share
-Logon on to the vortexbox by which ever means you would do that as root.
-change to the folder with the name you copied across:
-    "cd/storage/Media-Artist-List-master".
-change the permissions on the installation script "MAL_install.sh" so that it is executable:
+Logon on to the Vortexbox by which ever means you would do that, as root.
+Change to the folder with the name you copied across:
+    cd/storage/Media-Artist-List-master
+Change the permissions on the installation script "MAL_install.sh" to make it executable:
     chmod 700 MAL_install.sh
 execute the installation script:
     ./MAL_install.sh
 
-The installation will install the php-pdo library which enables PHP to read the SQLite database, it is possible you have already have this install. If that is the case the installation my display "Nothing to do." and "Complete", this relates only to that library, It doesn't suggest the other files haven't been copied accross unless you get other error message.
+The installation will install the php-pdo library which enables PHP to read the SQLite database, it is possible you have already have this install. If that is the case the installation may display "Nothing to do." and "Complete", this relates only to that library, It doesn't suggest the other files haven't been copied across unless you get other error message.
 
-While you are still at the command prompt run the following command to find the IP adress of your server, unless you already know it (the capitalisation of I makes a difference):
+While you are still at the command prompt run the following command to find the IP address of your server, unless you already know it (the capitalisation of I makes a difference):
 hostname -I 
 
 You can then log off as root and go back to your Desktop machine.
-Load your prefered browser and  in the address bar type the following replacing the IP address below with the address of your server:
+Load your preferred browser and  in the address bar type the following replacing the IP address below with the address of your server:
     http://192.168.1.24/MAL_start.php
 
-When you have the page displayed, save it as a favorite to enable easy access.  Click on the menu items and links (album, artist and track names) to make sure they work and assuming they do, you have it installed.
+When you have the page displayed, save it as a favorite to enable future easy access.  
+Click on the menu items and links (Album, Artist and Track names) to make sure they work and assuming they do, it has installed.
 
 Now if you wish, to tidy things up, you can delete the folder that you copied to your server to install from.
 
 
-If you have set up an LMS server of your own, under any other OS I guess you will be able to adapt these instructions.
+If you have set up an LMS server of your own, on Linux or under any other OS, I guess you will be able to adapt these instructions.
 
 Basically the installation places the file "MAL_start.php" and the folder MAL (which contains the rest of the applications files) within the the default root folder of the web server, which is commonly "/var/www/html".
+
+The application uses the LMS database, so it need to know where it is and also to be able to copy it to a file it can access it from, if you have adapted this installation you my also have to change the code to reflect any changes in the location the database.

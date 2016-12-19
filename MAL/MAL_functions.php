@@ -262,8 +262,6 @@ function album_genre_name($key) {
 	return $genre;
 }
 
-        
-    
     
 /* Returns the key for the album artist based on the album key passed to it.
 The key pasted to it is the key for the album the artist is required for.
@@ -277,6 +275,8 @@ function album_artist_key($album_key) {
 }
 
 
+/* A function that displays either a single value or an array to assist in debugging.
+*/
 function debug_view ( $what ) {
 
     echo '<pre>';
@@ -294,5 +294,4 @@ function debug_view ( $what ) {
     echo '</pre>';
 
 }
-
 ?>

@@ -24,9 +24,9 @@
 include 'MAL_menu.php';
 include 'MAL_SQL_queries.php';
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
-//		echo '<pre>'; var_dump($cover_art); echo '</pre>';
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL | E_STRICT);
+// echo '<pre>'; var_dump($cover_art); echo '</pre>';
 
 	if(open_db()) {
 		$album_key = $_GET['a'];
