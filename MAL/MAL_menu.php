@@ -18,7 +18,7 @@ include 'MAL_functions.php';
 // Builds and displays the main menu displaying the items that appear on every page.
 function app_menu()
 {
-	echo "<div class='no-print' id=\"menu_text\" >\n<ul id=\"menu\" >\n";
+	echo "<div class='no-print' id=\"menu_text\" >\n<ul id=\"menu_main\" >\n";
 	if(getcwd() == '/var/www/html') {
 		echo "\t<li id=\"menu_item\" ><a href=\"MAL_start.php\"><div id='menu_text'>Start Page</div></a></li>\n";
 		echo "\t<li id=\"menu_item\" ><a href=\"MAL/MAL_full_album_list.php\"><div id='menu_text'>Full Album List</div></a></li>\n";	
@@ -44,7 +44,7 @@ function display_menu($artist_key, $context, $album_key = 0, $track_key = 0) {
     //echo "Artist: " . $artist_key . " Context: " . $context . " Album_key: " . $album_key . " Track Key: " . $track_key;
 
 
-	echo "<div class='no-print' id=\"menu_text\" >\n<ul id=\"menu\" >\n";
+	echo "<div class='no-print' id=\"menu_text\" >\n<ul id=\"menu_specfic\" >\n";
 	if($context == 0) { 		// Start page
 		$query = get_sql('full_artist_list_csv');
 		$file_name = build_filename('artist_list.csv');

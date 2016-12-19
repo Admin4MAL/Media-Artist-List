@@ -68,7 +68,7 @@
     display: inline;
     }
 
-    #menu {
+    #menu_main {
 	margin: 14px auto;
 	width: 575px;
 	height: 20%
@@ -76,6 +76,16 @@
 	padding: 10px 6px;
 	border: 1px solid #6D7993;
 	color: #6D7993;
+    }
+    
+    #menu_specfic {
+	margin: 14px auto;
+	width: 676px;
+	height: 20%
+	box-shadow: 2px 2px 4px #888888;
+	padding: 10px 6px;
+	border: 1px solid #6D7993;
+	color: #6D7999;
     }
 
     #menu_item {
