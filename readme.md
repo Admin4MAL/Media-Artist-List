@@ -28,6 +28,7 @@ The lists this application displays will provide a way to spot the inconsistenci
 Let me know what you think, suggest improvements and point out any problems, remembering it works with your data and within the constraints of the structure of the LMS database.
 
 
-Link to [Vortexbox](http://vortexbox.org/about) web Pages
+Link to [Vortexbox](http://vortexbox.org/about) Website.
+
 Link to [LMS] (http://forums.slimdevices.com) Forums.
 
