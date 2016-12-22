@@ -48,10 +48,10 @@ include 'MAL_SQL_queries.php';
 		
 		$current_letter = "";
 		echo "<center>\n<table style=\"width: 70%;\">\n\t<colgroup>\n\t\t<col style=\"width:60%\">\n\t\t<col style=\"width:8%\">\n\t</colgroup>\n\t<tbody>\n";
-		echo "\t<tr><th>Track Title</th><th>Freqency</th></tr>\n";
+		echo "\t<tr><th>Track Title</th><th>Frequency</th></tr>\n";
 		while ($row = $result->fetchArray()) {
 			$track	 	=	$row['Track Title'];	
-			$freqency  	= 	$row['Freqency'];
+			$Frequency  	= 	$row['Frequency'];
 			if($context == 8) {
 				$namesort 	= 	$row['index_name'];
 				if($namesort == '') {	// Skip over the row  in the database that has a blank name
@@ -69,7 +69,7 @@ include 'MAL_SQL_queries.php';
 			} else {
 				echo "\t<tr><td>";	// Start the row
 			}	 
-			echo $track . "</td><td>$freqency</td></tr>\n";
+			echo $track . "</td><td>$Frequency</td></tr>\n";
 		}
 		echo "</center>\n</table>\n";
 		echo "<br /><center class='no-print' id=\"End_index\"> - The End - </center><br />";

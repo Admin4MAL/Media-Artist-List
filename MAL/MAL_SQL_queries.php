@@ -613,31 +613,31 @@ ORDER BY
     
     
     
-// Produces page content for the full track list webpage ordered by fequency
+// Produces page content for the full track list webpage ordered by Frequency
 "full_track_list_freq_content" =>
 "SELECT 
 	\"<a href=\"\"MAL_tracks_responsible_artists_list.php?a=\" || tracks.id || \"\"\"> <span id=<\"\"track\"\">\" || title || \"</span></a>\" AS 'Track Title', 
-	count(*) AS Freqency 
+	count(*) AS Frequency 
 FROM 
 	tracks 
 GROUP BY 
 	title 
 ORDER BY 
-	Freqency DESC, 
+	Frequency DESC, 
 	titlesort ASC;",
 
 
-// Produces csv file content for the full track list webpage ordered by fequency
+// Produces csv file content for the full track list webpage ordered by Frequency
 "full_track_list_freq_csv" =>
 "SELECT 
 	title AS 'Track Title', 
-	count(*) AS Freqency 
+	count(*) AS Frequency 
 FROM 
 	tracks 
 GROUP BY 
 	title 
 ORDER BY 
-	Freqency DESC, 
+	Frequency DESC, 
 	titlesort ASC;",
         
     
@@ -645,7 +645,7 @@ ORDER BY
 "full_track_list_title_content" =>
 "SELECT 
 	\"<a href=\"\"MAL_tracks_responsible_artists_list.php?a=\" ||  tracks.id ||   \"\"\"> <span id=<\"\"track\"\">\"  || title  || \"</span></a>\" AS 'Track Title', 
-	count(*) AS Freqency, 
+	count(*) AS Frequency, 
 	tracks.titlesort AS 'index_name' 
 FROM 
 	tracks 
@@ -653,21 +653,21 @@ GROUP BY
 	title 
 ORDER BY 
 	titlesort ASC, 
-	Freqency DESC;",
+	Frequency DESC;",
         
     
-// Produces csv file content for the full track list webpage ordered by fequency
+// Produces csv file content for the full track list webpage ordered by Frequency
 "full_track_list_title_csv" =>
 "SELECT 
 	title AS 'Track Title', 
-	count(*) AS Freqency 
+	count(*) AS Frequency 
 FROM 
 	tracks 
 GROUP BY 
 	title 
 ORDER BY 
 	titlesort ASC, 
-	Freqency DESC;",
+	Frequency DESC;",
             
 
 // Produces a page index page content for the full track list webpage when ordered by title     
