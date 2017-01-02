@@ -619,7 +619,9 @@ ORDER BY
 	\"<a href=\"\"MAL_tracks_responsible_artists_list.php?a=\" || tracks.id || \"\"\"> <span id=<\"\"track\"\">\" || title || \"</span></a>\" AS 'Track Title', 
 	count(*) AS Frequency 
 FROM 
-	tracks 
+	tracks
+WHERE 
+	(tracks.content_type != 'ssp')
 GROUP BY 
 	title 
 ORDER BY 
@@ -633,7 +635,9 @@ ORDER BY
 	title AS 'Track Title', 
 	count(*) AS Frequency 
 FROM 
-	tracks 
+	tracks
+WHERE 
+	(tracks.content_type != 'ssp')
 GROUP BY 
 	title 
 ORDER BY 
@@ -649,6 +653,8 @@ ORDER BY
 	tracks.titlesort AS 'index_name' 
 FROM 
 	tracks 
+WHERE 
+	(tracks.content_type != 'ssp')
 GROUP BY
 	title 
 ORDER BY 
@@ -662,7 +668,9 @@ ORDER BY
 	title AS 'Track Title', 
 	count(*) AS Frequency 
 FROM 
-	tracks 
+	tracks
+WHERE 
+	(tracks.content_type != 'ssp')
 GROUP BY 
 	title 
 ORDER BY 
@@ -675,7 +683,9 @@ ORDER BY
 "SELECT 
 	tracks.titlesort AS 'index_name' 
 FROM 
-	tracks 
+	tracks
+WHERE 
+	(tracks.content_type != 'ssp')
 GROUP BY 
 	title 
 ORDER BY 
